@@ -1,0 +1,28 @@
+# Compiler and compiler flags
+CC = gcc
+CFLAGS = 
+#
+# # Source code file and target executable
+SERVER_SRC = peer-server.c
+PEER_SRC = peer.c
+
+PEER_TARGET = peer
+SERVER_TARGET = p-server
+#
+# # Libraries to link
+LIBS = -lpthread
+
+all: $(SERVER_TARGET) $(PEER_TARGET)
+
+$(SERVER_TARGET): $(SERVER_SRC)
+	$(CC) $(CFLAGS) -o $(SERVER_TARGET) $(SERVER_SRC) $(LIBS)
+
+$(PEER_TARGET): $(PEER_SRC)
+	$(CC) $(CFLAGS) -o $(PEER_TARGET) $(PEER_SRC) $(LIBS)
+
+clean:
+	rm -f $(SERVER_TARGET) $(PEER_TARGET)
+	
+#
+# # Build and compile the program
+#
